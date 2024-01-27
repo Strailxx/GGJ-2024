@@ -13,6 +13,8 @@ namespace PlayerController
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
 
+        public Animator animator;
+
         #region Interface
 
         public Vector2 FrameInput => _frameInput.Move;
@@ -43,7 +45,7 @@ namespace PlayerController
                 JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C),
                 Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
             };
-            
+
             if (_frameInput.JumpDown)
             {
                 _jumpToConsume = true;
@@ -76,6 +78,7 @@ namespace PlayerController
             // Landed on the Ground
             if (!_grounded && groundHit)
             {
+                animator.SetBool("isJumping", false);
                 _grounded = true;
                 _coyoteUsable = true;
                 _bufferedJumpUsable = true;
@@ -85,6 +88,7 @@ namespace PlayerController
             // Left the Ground
             else if (_grounded && !groundHit)
             {
+                animator.SetBool("isJumping", true);
                 _grounded = false;
                 _frameLeftGrounded = _time;
                 GroundedChanged?.Invoke(false, 0);
@@ -114,25 +118,37 @@ namespace PlayerController
 
         private void ExecuteJump()
         {
+            animator.SetBool("jump", true);
             _endedJumpEarly = false;
             _timeJumpWasPressed = 0;
             _bufferedJumpUsable = false;
             _coyoteUsable = false;
             _frameVelocity.y = _stats.JumpPower;
             Jumped?.Invoke();
+            Invoke("JumpDelay", 0.2f);
         }
+
         private void HandleDirection()
         {
             if (_frameInput.Move.x == 0)
             {
                 var deceleration = _grounded ? _stats.GroundDeceleration : _stats.AirDeceleration;
                 _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, 0, deceleration * Time.fixedDeltaTime);
+                animator.SetBool("isRunning", false);
             }
             else
             {
                 _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
+                if (_frameVelocity.x > 0) {
+                    transform.localScale = new Vector3(1f, 1f, 1f);
+                } else if (_frameVelocity.x < 0)
+                {
+                    transform.localScale = new Vector3(-1f, 1f, 1f);
+                }
+                animator.SetBool("isRunning", true);
             }
         }
+
         private void HandleGravity()
         {
             if (_grounded && _frameVelocity.y <= 0f)
@@ -146,7 +162,13 @@ namespace PlayerController
                 _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
             }
         }
+
         private void ApplyMovement() => _rb.velocity = _frameVelocity;
+
+        public void JumpDelay()
+        {
+            animator.SetBool("jump", false);
+        }
     }
 
     public struct FrameInput
@@ -155,6 +177,7 @@ namespace PlayerController
         public bool JumpHeld;
         public Vector2 Move;
     }
+
 
     public interface IPlayerController
     {
