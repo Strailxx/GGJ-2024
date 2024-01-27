@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473f4766-e197-4571-9b57-e2dee32142a8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Comic Relief/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Comic Relief/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Scripts/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/PlayerController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Scripts/PlayerController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/PlayerJump.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/PlayerJump.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TutorialScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TutorialScene.unity" afterDir="false" />
-    </list>
+    <list default="true" id="473f4766-e197-4571-9b57-e2dee32142a8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,7 +91,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706327896433</updated>
-      <workItem from="1706327898519" duration="10081000" />
+      <workItem from="1706327898519" duration="10396000" />
     </task>
     <servers />
   </component>
