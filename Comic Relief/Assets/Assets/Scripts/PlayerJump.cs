@@ -19,6 +19,5 @@ public class PlayerJump : MonoBehaviour
         {
             rigidbody.AddForce(new Vector2(rigidbody.velocity.x, jump));
         }
-        
     }
 }
