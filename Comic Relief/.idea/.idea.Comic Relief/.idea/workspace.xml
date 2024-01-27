@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473f4766-e197-4571-9b57-e2dee32142a8" name="Changes" comment="" />
+    <list default="true" id="473f4766-e197-4571-9b57-e2dee32142a8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Player Controller.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Player Controller.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TutorialScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TutorialScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
