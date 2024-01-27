@@ -17,10 +17,10 @@ public class VertPlatforms : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.S)) {
+        if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow)){
             waitTime = 0.25f;
         }
-        if (Input.GetKey(KeyCode.S)) {
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)){
             if (waitTime <= 0) {
                 effector.rotationalOffset = 180f;
                 waitTime = 0.25f;

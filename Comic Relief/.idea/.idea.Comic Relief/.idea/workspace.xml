@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="473f4766-e197-4571-9b57-e2dee32142a8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Comic Relief/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Comic Relief/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/VertPlatforms.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Scripts/VertPlatforms.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +96,7 @@
       <updated>1706327896433</updated>
       <workItem from="1706327898519" duration="11493000" />
       <workItem from="1706377928242" duration="52000" />
-      <workItem from="1706379690303" duration="928000" />
+      <workItem from="1706379690303" duration="1580000" />
     </task>
     <servers />
   </component>
