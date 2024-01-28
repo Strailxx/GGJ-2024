@@ -3,31 +3,46 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     public GameObject currentMenuItem;
-    public GameObject play;
-    public GameObject controls;
-    public GameObject options;
+    public GameObject player;
+    // Objects: 0 = Play || 1 = Options || 2 = Controls
+    public GameObject[] objects;
+    // Displays 0 = Options || 1 = Controls
+    public GameObject[] displays;
     
-    //
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (currentMenuItem == play)
+            if (currentMenuItem == objects[0])
             {
-                Debug.Log("Play");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
-            else if (currentMenuItem == controls)
+            else if (currentMenuItem == objects[1])
             {
-                Debug.Log("Controls");
+                player.SetActive(false);
+                displays[0].SetActive(true);
             }
-            else if (currentMenuItem == options)
+            else if (currentMenuItem == objects[2])
             {
-                Debug.Log("Options");
+                player.SetActive(false);
+                displays[1].SetActive(true);
             }
+        }
+
+        if (displays[0] != false && Input.GetKeyDown(KeyCode.Escape))
+        {
+            displays[0].SetActive(false);
+            player.SetActive(true);
+        }
+        if (displays[1] != false && Input.GetKeyDown(KeyCode.Escape))
+        {
+            displays[1].SetActive(false);
+            player.SetActive(true);
         }
     }
 

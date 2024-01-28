@@ -10,6 +10,7 @@ public class ExitScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Application.Quit();
             Debug.Log("Exit Game lol");
         }
     }
