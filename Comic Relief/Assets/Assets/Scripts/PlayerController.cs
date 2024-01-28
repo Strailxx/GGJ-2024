@@ -13,6 +13,9 @@ namespace PlayerController
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
 
+        private bool _insideComic;
+        private GameObject _collidersRoot;
+
         public Animator animator;
 
         #region Interface
@@ -30,7 +33,13 @@ namespace PlayerController
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<CapsuleCollider2D>();
 
+            _insideComic = true;
+
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
+        }
+        private void Start()
+        {
+            _collidersRoot = GameObject.Find("/Colliders");
         }
         private void Update()
         {
@@ -43,7 +52,9 @@ namespace PlayerController
             {
                 JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C),
                 JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C),
-                Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
+                Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")),
+                // TODO this should use a mappable button
+                ScissorsKeyDown = Input.GetKeyDown(KeyCode.Q)
             };
 
             if (_frameInput.JumpDown)
@@ -55,6 +66,8 @@ namespace PlayerController
         private void FixedUpdate()
         {
             CheckCollisions();
+            // Handle scissors before applying physics as it may change whether the player is in the comic.
+            HandleScissors();
             HandleJump();
             HandleDirection();
             HandleGravity();
@@ -63,6 +76,7 @@ namespace PlayerController
         
         private float _frameLeftGrounded = float.MinValue;
         private bool _grounded;
+        private Collider2D _touchingScissorableCollider;
 
         private void CheckCollisions()
         {
@@ -94,8 +108,47 @@ namespace PlayerController
                 GroundedChanged?.Invoke(false, 0);
             }
 
+            // Near a wall that can be scissored
+            _touchingScissorableCollider = null;
+            Collider2D[] colliders = _collidersRoot.GetComponentsInChildren<Collider2D>();
+            foreach (Collider2D collider in colliders)
+            {
+                string colliderName = collider.transform.gameObject.name;
+                // Inside of the comic we can scissor out through sides. Outside we can scissor in anywhere.
+                bool colliderScissorable = colliderName == "Left" ||
+                                           colliderName == "Right" ||
+                                           (!_insideComic && (
+                                                colliderName == "Top" ||
+                                                colliderName == "Bottom"));
+                if (!colliderScissorable) continue; // Not a scissorable collider.
+
+                // Check if player is close enough to the collider
+                Vector2 closestPoint = collider.ClosestPoint(_rb.position);
+                float distance = Vector2.Distance(closestPoint, _rb.position);
+                // TODO pull scissorable distance out to ScriptableStats
+                if (distance > 0.5) continue; // Scissorable collider too far.
+
+                _touchingScissorableCollider = collider;
+            }
+
             Physics2D.queriesStartInColliders = _cachedQueryStartInColliders;
         }
+
+        // TODO Player currently always has scissors. Make the player pick up scissors before being
+        // able to use them.
+        private bool _holdingScissors = true;
+        private void HandleScissors()
+        {
+            if (!_holdingScissors) return;
+
+            if (_frameInput.ScissorsKeyDown && _touchingScissorableCollider != null) {
+                // Cut player through wall
+                Vector2 offset = _rb.position - _touchingScissorableCollider.ClosestPoint(_rb.position);
+                _rb.position -= 2*offset;
+                _insideComic = !_insideComic;
+            }
+        }
+
         private bool _jumpToConsume;
         private bool _bufferedJumpUsable;
         private bool _endedJumpEarly;
@@ -107,6 +160,9 @@ namespace PlayerController
 
         private void HandleJump()
         {
+            // No jumping when outside of the comic (no gravity)
+            if (!_insideComic) return;
+
             if (!_endedJumpEarly && !_grounded && !_frameInput.JumpHeld && _rb.velocity.y > 0) _endedJumpEarly = true;
 
             if (!_jumpToConsume && !HasBufferedJump) return;
@@ -130,11 +186,11 @@ namespace PlayerController
 
         private void HandleDirection()
         {
+            var isRunning = false;
             if (_frameInput.Move.x == 0)
             {
                 var deceleration = _grounded ? _stats.GroundDeceleration : _stats.AirDeceleration;
                 _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, 0, deceleration * Time.fixedDeltaTime);
-                animator.SetBool("isRunning", false);
             }
             else
             {
@@ -145,12 +201,32 @@ namespace PlayerController
                 {
                     transform.localScale = new Vector3(-1f, 1f, 1f);
                 }
-                animator.SetBool("isRunning", true);
+                isRunning = true;
             }
+
+            // Outside of comic we can also move in the y direction with input.
+            if (!_insideComic)
+            {
+                if (_frameInput.Move.y == 0)
+                {
+                    var deceleration = _stats.AirDeceleration;
+                    _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, 0, deceleration * Time.fixedDeltaTime);
+                }
+                else
+                {
+                    _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, _frameInput.Move.y * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
+                    isRunning = true;
+                }
+            }
+            
+            animator.SetBool("isRunning", isRunning);
         }
 
         private void HandleGravity()
         {
+            // No gravity outside of the comic.
+            if (!_insideComic) return;
+
             if (_grounded && _frameVelocity.y <= 0f)
             {
                 _frameVelocity.y = _stats.GroundingForce;
@@ -176,6 +252,7 @@ namespace PlayerController
         public bool JumpDown;
         public bool JumpHeld;
         public Vector2 Move;
+        public bool ScissorsKeyDown;
     }
 
 
