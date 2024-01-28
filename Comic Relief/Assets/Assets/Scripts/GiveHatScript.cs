@@ -26,6 +26,10 @@ public class GiveHatScript : MonoBehaviour
             inv.Remove(Hat1);
             inv.Remove(Hat2);
             inv.Remove(Hat3);
+            Hat.SetActive(false);
+            Hat1.SetActive(false);
+            Hat2.SetActive(false);
+            Hat3.SetActive(false);
             StarHasHat = true;
 
         }
