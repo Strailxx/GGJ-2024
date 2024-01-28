@@ -17,7 +17,13 @@ public class InventorySystem : MonoBehaviour
         items.Add(item);
         Update_UI();
     }
-    
+
+    public void Remove(GameObject item)
+    {
+        items.Remove(item);
+        Update_UI();
+    }
+
     void Update_UI()
     {
         HideImages();
