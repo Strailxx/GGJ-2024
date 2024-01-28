@@ -13,6 +13,15 @@ public class Panel1Script : MonoBehaviour
     public GameObject speechDef;
     public GameObject speechNew;
 
+    public GameObject keyring;
+    public GameObject player;
+    private Collider2D keyringCol; 
+
+    private void Start()
+    {
+        keyringCol = keyring.GetComponent<Collider2D>();
+    }
+
     private void FixedUpdate()
     {
         CheckKey();
