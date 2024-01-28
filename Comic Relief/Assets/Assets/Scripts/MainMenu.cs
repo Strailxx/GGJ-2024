@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -13,7 +14,15 @@ public class MainMenu : MonoBehaviour
     public GameObject[] objects;
     // Displays 0 = Options || 1 = Controls
     public GameObject[] displays;
-    
+    public Slider slider;
+    void Start()
+    {
+        if (slider != null)
+        {
+            slider.value = 1;
+        }
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
