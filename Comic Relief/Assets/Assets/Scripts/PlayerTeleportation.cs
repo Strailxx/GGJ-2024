@@ -7,6 +7,7 @@ public class PlayerTeleportation : MonoBehaviour
 {
     private GameObject currentTeleporter;
 
+    // Updates every frame to check for F input if F is inputted teleport player to other teleporter set within the public vars
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -18,6 +19,7 @@ public class PlayerTeleportation : MonoBehaviour
         }
     }
 
+    // Setting the current teleporter for use up above when walking over at teleporter
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Teleporter"))
