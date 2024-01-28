@@ -4567,6 +4567,7 @@ GameObject:
   - component: {fileID: 1474083529}
   - component: {fileID: 1474083531}
   - component: {fileID: 1474083530}
+  - component: {fileID: 1474083532}
   m_Layer: 6
   m_Name: givegun
   m_TagString: Untagged
@@ -4647,6 +4648,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1474083532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474083528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76587b01a06fa1d4483b12a730bb8cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inv: {fileID: 514030592}
+  shotgun: {fileID: 2030218987}
+  peeps0ded: {fileID: 1993357910}
+  stardead: {fileID: 1557693849}
+  words9: {fileID: 437497363}
+  givegun: {fileID: 1860206128}
+  completedHiddenGoal: 0
+  inPosition: 0
 --- !u!1 &1495653783
 GameObject:
   m_ObjectHideFlags: 0
