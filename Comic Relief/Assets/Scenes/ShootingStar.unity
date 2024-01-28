@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1440,6 +1440,7 @@ MonoBehaviour:
   peep0: {fileID: 1585659423}
   deadPeep0: {fileID: 1993357910}
   DestGun: {fileID: 2022628607}
+  starHasGun: 0
   inPosition: 0
 --- !u!1 &437497363
 GameObject:
@@ -5402,7 +5403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inv: {fileID: 514030592}
-  shotgun: {fileID: 2030218987}
+  shotgun: {fileID: 2022628607}
   peeps0ded: {fileID: 1993357910}
   stardead: {fileID: 1557693849}
   words9: {fileID: 437497363}
