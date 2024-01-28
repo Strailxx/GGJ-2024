@@ -53,11 +53,11 @@ public class InteractionSystem : MonoBehaviour
     //Visual Guide for Pickup Area
     
     
-    /*
+    
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(detectionPoint.position, detectionRadius);
     }
-    */
+    
 }
