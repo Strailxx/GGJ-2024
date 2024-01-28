@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1253,12 +1253,13 @@ GameObject:
   - component: {fileID: 420333599}
   - component: {fileID: 420333601}
   - component: {fileID: 420333600}
+  - component: {fileID: 420333602}
   m_Layer: 6
   m_Name: givegun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!4 &420333599
 Transform:
@@ -1333,6 +1334,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.991848, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &420333602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420333598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81f451b2f6d89c47a8e6442bf391ca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inv: {fileID: 514030592}
+  Gun: {fileID: 2030218987}
+  peep0: {fileID: 1585659423}
+  deadPeep0: {fileID: 1993357910}
+  DestGun: {fileID: 2022628607}
+  inPosition: 0
 --- !u!1 &437497363
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,6 +1904,19 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &606259096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606259090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec496fc5bd0d32e4b8ccafaaa08d2387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitTime: 0
 --- !u!1 &607187655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2066,6 +2098,7 @@ GameObject:
   - component: {fileID: 704032020}
   - component: {fileID: 704032022}
   - component: {fileID: 704032021}
+  - component: {fileID: 704032023}
   m_Layer: 6
   m_Name: touchstar
   m_TagString: Untagged
@@ -2146,6 +2179,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.4128776, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &704032023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704032019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97074da708e11a345bdf566feb018fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inv: {fileID: 514030592}
+  star: {fileID: 1041928216}
+  shootingStar: {fileID: 213547062}
+  giveGun: {fileID: 420333598}
+  giveHat: {fileID: 1417854502}
+  speechNew: {fileID: 263501871}
+  inPosition: 0
 --- !u!1 &723015550 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4562020974947476369, guid: 0c93fafa88bf7f34594bb854525289c5, type: 3}
@@ -3269,6 +3321,19 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &914798781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914798775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec496fc5bd0d32e4b8ccafaaa08d2387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitTime: 0
 --- !u!1 &968638022
 GameObject:
   m_ObjectHideFlags: 0
@@ -4392,12 +4457,13 @@ GameObject:
   - component: {fileID: 1417854503}
   - component: {fileID: 1417854505}
   - component: {fileID: 1417854504}
+  - component: {fileID: 1417854506}
   m_Layer: 6
   m_Name: givehat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!4 &1417854503
 Transform:
@@ -4472,6 +4538,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1417854506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417854502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67ab88d2f8495ea4c9b663a24cb0a099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inv: {fileID: 514030592}
+  Hat: {fileID: 1083622901}
+  Hat1: {fileID: 1539378688}
+  Hat2: {fileID: 968638022}
+  Hat3: {fileID: 731085576}
+  DestHat: {fileID: 322306415}
+  StarHasHat: 0
+  inPosition: 0
 --- !u!1 &1451999725
 GameObject:
   m_ObjectHideFlags: 0
@@ -6488,9 +6574,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8000344890214418345, guid: 0c93fafa88bf7f34594bb854525289c5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 606259093}
+    - targetCorrespondingSourceObject: {fileID: 8000344890214418345, guid: 0c93fafa88bf7f34594bb854525289c5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 606259096}
     - targetCorrespondingSourceObject: {fileID: 1723452545536000467, guid: 0c93fafa88bf7f34594bb854525289c5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 914798778}
+    - targetCorrespondingSourceObject: {fileID: 1723452545536000467, guid: 0c93fafa88bf7f34594bb854525289c5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 914798781}
     - targetCorrespondingSourceObject: {fileID: 954945896199498788, guid: 0c93fafa88bf7f34594bb854525289c5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2030218991}
