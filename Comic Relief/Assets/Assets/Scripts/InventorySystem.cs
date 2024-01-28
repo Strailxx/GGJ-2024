@@ -14,8 +14,8 @@ public class InventorySystem : MonoBehaviour
     
     public void PickUp(GameObject item)
     {
-        items.Add(item);
-        Update_UI();
+            items.Add(item);
+            Update_UI();
     }
 
     public void Remove(GameObject item)

@@ -23,9 +23,13 @@ public class Item : MonoBehaviour
         {
             case InteractionType.PickUp:
                 //Add item to inventory System
-                FindObjectOfType<InventorySystem>().PickUp(gameObject);
-                gameObject.SetActive(false);
-                Debug.Log("Pick Up");
+                Debug.Log("Pickup");
+                if (FindObjectOfType<InventorySystem>().items.Count < 2)
+                {
+                    FindObjectOfType<InventorySystem>().PickUp(gameObject);
+                    gameObject.SetActive(false);
+                    Debug.Log("Innv no full");
+                }
                 break;
             case InteractionType.Interact:
                 Debug.Log("Interact");
