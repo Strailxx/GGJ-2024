@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -9,7 +10,7 @@ public class Item : MonoBehaviour
 {
     public enum InteractionType { NONE,Interact,PickUp}
     public InteractionType type;
-    
+    public List<GameObject> items;
     //Forces items to have a trigger
     private void Reset()
     {

@@ -23,7 +23,6 @@ public class InventorySystem : MonoBehaviour
         items.Remove(item);
         Update_UI();
     }
-
     void Update_UI()
     {
         HideImages();
